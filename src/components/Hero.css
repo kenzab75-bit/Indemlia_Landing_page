@@ -1,0 +1,265 @@
+.hero {
+  position: relative;
+  padding-block: clamp(var(--space-12), 6vw, var(--space-20)) var(--space-20);
+  overflow: hidden;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: clamp(var(--space-8), 4vw, var(--space-16));
+}
+
+.hero__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-6);
+}
+
+.hero__title {
+  margin-block: var(--space-1) 0;
+  max-width: 18ch;
+}
+
+.hero__lede strong {
+  font-weight: var(--weight-ui);
+  color: var(--text-strong);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-block-start: var(--space-1);
+}
+
+.hero__access {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  max-width: 52ch;
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--surface-ok);
+  border: 1px solid var(--line-jade);
+  font-size: var(--size-sm);
+  line-height: var(--leading-snug);
+  color: var(--text-strong);
+}
+
+.hero__access .icon {
+  color: var(--jade);
+  margin-block-start: 2px;
+}
+
+.hero__pillars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-6);
+  padding-block-start: var(--space-2);
+  border-top: 1px solid var(--line);
+  width: 100%;
+  margin-block-start: var(--space-1);
+}
+
+.hero__pillar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--size-xs);
+  font-weight: var(--weight-label);
+  color: var(--text-muted);
+}
+
+.hero__pillar .icon {
+  color: var(--jade);
+}
+
+/* ---------- Le fil ----------------------------------------- */
+.hero__art {
+  justify-self: center;
+  width: 100%;
+  max-width: 420px;
+}
+
+.hero__svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.hero__ground {
+  stroke: var(--line);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 7;
+  stroke-linecap: round;
+}
+
+.hero__road {
+  fill: none;
+  stroke: var(--nuit);
+  stroke-width: 16;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Le pointillé Accent avance en continu : le fil est vivant. */
+.hero__thread {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.5 13;
+  animation: hero-thread-flow 2.6s linear infinite;
+}
+
+@keyframes hero-thread-flow {
+  to {
+    stroke-dashoffset: -13.5;
+  }
+}
+
+.hero__dot {
+  fill: var(--jade);
+  animation: hero-dot-breathe 4.5s var(--ease-in-out) infinite;
+  transform-origin: 232px 40px;
+}
+
+@keyframes hero-dot-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.hero__ring {
+  fill: none;
+  stroke: var(--halo-accent);
+  stroke-width: 1.5;
+  transform-origin: 238px 96px;
+}
+
+.hero__ring--a {
+  animation: hero-ring 7s var(--ease-in-out) infinite;
+}
+
+.hero__ring--b {
+  stroke: var(--halo-accent-soft);
+  animation: hero-ring 7s var(--ease-in-out) 1.2s infinite;
+}
+
+@keyframes hero-ring {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.45;
+  }
+}
+
+.hero__step {
+  color: var(--jade);
+  opacity: 0;
+  animation: hero-step-in var(--dur-slow) var(--ease-out) forwards;
+}
+
+@keyframes hero-step-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.75;
+  }
+}
+
+/* ---------- Invitation à descendre -------------------------- */
+.hero__scroll {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: var(--space-12) auto 0;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line);
+  background: var(--surface-card);
+  font-size: var(--size-xs);
+  font-weight: var(--weight-label);
+  color: var(--text-muted);
+  text-decoration: none;
+  width: fit-content;
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.hero__scroll:hover {
+  color: var(--text-strong);
+  border-color: var(--line-jade);
+}
+
+.hero__scroll svg {
+  animation: hero-nudge 2.4s var(--ease-in-out) infinite;
+}
+
+@keyframes hero-nudge {
+  0%,
+  70%,
+  100% {
+    transform: translateY(0);
+  }
+  85% {
+    transform: translateY(3px);
+  }
+}
+
+/* ---------- Adaptations ------------------------------------- */
+@media (max-width: 900px) {
+  .hero__inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-10);
+  }
+
+  .hero__art {
+    order: -1;
+    max-width: 260px;
+    margin-inline: auto;
+  }
+
+  .hero__title {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero {
+    padding-block-end: var(--space-14);
+  }
+
+  .hero__art {
+    max-width: 208px;
+  }
+
+  .hero__actions .btn {
+    flex: 1 1 100%;
+  }
+
+  .hero__pillars {
+    gap: var(--space-3);
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__step {
+    opacity: 0.75;
+  }
+}

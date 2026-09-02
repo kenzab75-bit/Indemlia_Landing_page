@@ -1,0 +1,138 @@
+/* ============================================================
+   INDEMLIA — DESIGN SYSTEM
+   Feuille de tokens unique. C'est le SEUL fichier du projet
+   où une couleur littérale a le droit d'exister.
+   Partout ailleurs : var(--…) exclusivement.
+   ============================================================ */
+
+:root {
+  /* ---------- 1. Palette de marque ------------------------- */
+  --nuit: #0d1e3a; /* ancre, titres, texte principal, fonds de confiance */
+  --jade: #198a73; /* progression, confirmation — touches délibérées    */
+  --accent: #3fcbaa; /* interaction, mouvement, le « fil »               */
+  --ivoire: #f7f6f2; /* fond principal — jamais de blanc pur            */
+  --ardoise: #5b7080; /* texte secondaire, métadonnées                  */
+  --carte: #fdfcf9; /* surfaces posées sur l'ivoire                     */
+
+  /* ---------- 2. Fonctionnelles, rares --------------------- */
+  --warn: #e68473; /* priorité du jour                                  */
+  --crit: #c95745; /* échéance qui approche                             */
+  --ok-bg: #e7f1ed; /* fond de confirmation                             */
+
+  /* ---------- 3. Surfaces ---------------------------------- */
+  --surface-page: var(--ivoire);
+  --surface-card: var(--carte);
+  --surface-deep: var(--nuit);
+  --surface-sunk: color-mix(in srgb, var(--nuit) 4%, var(--ivoire));
+  --surface-ok: var(--ok-bg);
+  --surface-deep-card: color-mix(in srgb, var(--ivoire) 7%, var(--nuit));
+  --surface-jade-veil: color-mix(in srgb, var(--jade) 8%, var(--ivoire));
+
+  /* ---------- 4. Texte ------------------------------------- */
+  --text-strong: var(--nuit);
+  --text-muted: var(--ardoise);
+  --text-on-deep: var(--ivoire);
+  --text-on-deep-muted: color-mix(in srgb, var(--ivoire) 68%, var(--nuit));
+  --text-on-deep-faint: color-mix(in srgb, var(--ivoire) 46%, var(--nuit));
+
+  /* ---------- 5. Traits ------------------------------------ */
+  --line: color-mix(in srgb, var(--nuit) 11%, transparent);
+  --line-strong: color-mix(in srgb, var(--nuit) 20%, transparent);
+  --line-jade: color-mix(in srgb, var(--jade) 34%, transparent);
+  --line-warn: color-mix(in srgb, var(--warn) 55%, transparent);
+  --line-on-deep: color-mix(in srgb, var(--ivoire) 16%, var(--nuit));
+  --line-on-deep-strong: color-mix(in srgb, var(--ivoire) 30%, var(--nuit));
+
+  /* ---------- 6. Halos & voiles ---------------------------- */
+  --halo-accent: color-mix(in srgb, var(--accent) 26%, transparent);
+  --halo-accent-soft: color-mix(in srgb, var(--accent) 12%, transparent);
+  --halo-jade-soft: color-mix(in srgb, var(--jade) 12%, transparent);
+  --halo-nuit-soft: color-mix(in srgb, var(--nuit) 6%, transparent);
+  --veil-accent-deep: color-mix(in srgb, var(--accent) 18%, transparent);
+  --trail-idle: color-mix(in srgb, var(--ivoire) 22%, var(--nuit));
+  --trail-idle-light: color-mix(in srgb, var(--nuit) 16%, transparent);
+
+  /* ---------- 7. Ombres douces teintées Nuit --------------- */
+  --shadow-tint-a: color-mix(in srgb, var(--nuit) 6%, transparent);
+  --shadow-tint-b: color-mix(in srgb, var(--nuit) 9%, transparent);
+  --shadow-tint-c: color-mix(in srgb, var(--nuit) 16%, transparent);
+  --shadow-1: 0 1px 2px var(--shadow-tint-a), 0 2px 6px var(--shadow-tint-a);
+  --shadow-2: 0 2px 4px var(--shadow-tint-a), 0 10px 24px var(--shadow-tint-b);
+  --shadow-3: 0 4px 8px var(--shadow-tint-b), 0 24px 56px var(--shadow-tint-c);
+
+  /* ---------- 8. Typographie ------------------------------- */
+  --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-sans: "Lexend", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --size-display: clamp(2.25rem, 1.4rem + 3.1vw, 3.5rem);
+  --size-h2: clamp(1.875rem, 1.25rem + 2.4vw, 2.75rem);
+  --size-h3: clamp(1.25rem, 1.08rem + 0.7vw, 1.5rem);
+  --size-h4: 1.125rem;
+  --size-body-lg: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --size-body: 1rem;
+  --size-sm: 0.9375rem;
+  --size-xs: 0.8125rem;
+  --size-2xs: 0.75rem;
+
+  --leading-display: 1.08;
+  --leading-title: 1.2;
+  --leading-body: 1.625; /* 16 / 26 */
+  --leading-snug: 1.45;
+
+  --weight-body: 400;
+  --weight-label: 500;
+  --weight-ui: 600;
+  --weight-strong: 700;
+
+  --tracking-eyebrow: 0.13em;
+  --tracking-tight: -0.02em;
+
+  /* ---------- 9. Grille d'espacement 4 px ------------------ */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-30: 120px;
+
+  --section-y: clamp(var(--space-16), 7vw, var(--space-30));
+
+  /* ---------- 10. Rayons ----------------------------------- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --radius-pill: 999px;
+
+  /* ---------- 11. Mouvement -------------------------------- */
+  --ease-out: cubic-bezier(0.22, 0.75, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 180ms;
+  --dur-base: 320ms;
+  --dur-slow: 620ms;
+  --dur-walk: 900ms;
+
+  /* ---------- 12. Mise en page ----------------------------- */
+  --page-max: 1120px;
+  --measure: 62ch;
+  --gutter: clamp(20px, 5vw, 48px);
+
+  /* ---------- 13. Focus ------------------------------------ */
+  --focus-ring: var(--jade);
+  --focus-width: 3px;
+  --focus-offset: 3px;
+}
+
+/* Sur fond Nuit, l'anneau de focus passe en Accent (contraste 8:1). */
+.is-deep {
+  --focus-ring: var(--accent);
+}

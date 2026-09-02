@@ -1,0 +1,114 @@
+.neutral__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 48ch;
+}
+
+.neutral__proofs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+  margin-block-start: var(--space-12);
+}
+
+.neutral__proof {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-7);
+  transition:
+    border-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+.neutral__proof:hover {
+  border-color: var(--line-jade);
+  box-shadow: var(--shadow-2);
+}
+
+.neutral__proof-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-md);
+  background: var(--surface-ok);
+  color: var(--jade);
+}
+
+.neutral__proof-name {
+  font-size: 1.25rem;
+  line-height: 1.35;
+}
+
+.neutral__proof-text {
+  font-size: var(--size-sm);
+  line-height: var(--leading-snug);
+  color: var(--text-muted);
+}
+
+/* ---------- Les limites ------------------------------------- */
+.neutral__limits {
+  margin-block-start: var(--space-12);
+  padding: var(--space-8);
+  border-radius: var(--radius-xl);
+  background: var(--surface-sunk);
+  border: 1px solid var(--line);
+}
+
+.neutral__limits-title {
+  margin-block-end: var(--space-6);
+}
+
+.neutral__limits-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-6);
+}
+
+.neutral__limit {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.neutral__limit-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-card);
+  border: 1px solid var(--line-strong);
+  color: var(--ardoise);
+}
+
+.neutral__limit-name {
+  font-size: var(--size-sm);
+  font-weight: var(--weight-ui);
+  line-height: 1.4;
+  margin-block-end: var(--space-1);
+}
+
+.neutral__limit-text {
+  font-size: var(--size-xs);
+  line-height: var(--leading-snug);
+  color: var(--text-muted);
+}
+
+@media (max-width: 980px) {
+  .neutral__proofs,
+  .neutral__limits-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .neutral__proof {
+    padding: var(--space-6);
+  }
+
+  .neutral__limits {
+    padding: var(--space-6);
+  }
+}

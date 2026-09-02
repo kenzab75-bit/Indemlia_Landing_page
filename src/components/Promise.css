@@ -1,0 +1,106 @@
+.promise {
+  position: relative;
+  padding-block: var(--section-y);
+  background: var(--surface-jade-veil);
+  border-block: 1px solid var(--line-jade);
+  overflow: hidden;
+}
+
+.promise__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  text-align: center;
+}
+
+.promise .eyebrow::before {
+  display: none;
+}
+
+.promise__figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+  margin: 0;
+}
+
+/* Le seul endroit de la page où le serif prend toute la place. */
+.promise__quote {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 1rem + 3.2vw, 3rem);
+  line-height: 1.22;
+  letter-spacing: var(--tracking-tight);
+  max-width: 20ch;
+  color: var(--text-strong);
+}
+
+.promise__quote em {
+  font-style: italic;
+  color: var(--jade);
+}
+
+.promise__caption {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--size-xs);
+  font-weight: var(--weight-label);
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.promise__caption::before {
+  content: "";
+  width: var(--space-6);
+  height: 1px;
+  background: var(--line-strong);
+}
+
+.promise__text {
+  max-width: 62ch;
+  font-size: var(--size-body-lg);
+  line-height: var(--leading-body);
+  color: var(--text-muted);
+}
+
+.promise__text strong {
+  font-weight: var(--weight-ui);
+  color: var(--text-strong);
+  font-style: italic;
+}
+
+/* Six empreintes qui traversent : le fil ne s'arrête pas ici non plus. */
+.promise__steps {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  color: var(--jade);
+}
+
+.promise__step {
+  display: block;
+  opacity: 0;
+  animation: promise-step 3.6s var(--ease-in-out) infinite;
+}
+
+@keyframes promise-step {
+  0%,
+  70%,
+  100% {
+    opacity: 0.18;
+  }
+  20% {
+    opacity: 0.65;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promise__step {
+    opacity: 0.35;
+    animation: none;
+  }
+}

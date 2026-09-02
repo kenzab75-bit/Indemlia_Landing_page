@@ -1,0 +1,613 @@
+.demo {
+  background: var(--surface-sunk);
+  border-block: 1px solid var(--line);
+  /* Le halo déborde volontairement de l'appareil : on le laisse
+     respirer en hauteur, on le coupe en largeur. */
+  overflow-x: clip;
+}
+
+.demo__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(var(--space-10), 6vw, var(--space-20));
+}
+
+.demo__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.demo__title {
+  max-width: 16ch;
+}
+
+.demo__points {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-block-start: var(--space-2);
+}
+
+.demo__point {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.demo__point-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--surface-card);
+  border: 1px solid var(--line);
+}
+
+.demo__point-icon--warn {
+  color: var(--crit);
+  border-color: var(--line-warn);
+}
+
+.demo__point-icon--accent {
+  color: var(--jade);
+  border-color: var(--line-jade);
+}
+
+.demo__point-icon--jade {
+  color: var(--jade);
+  background: var(--surface-ok);
+  border-color: var(--line-jade);
+}
+
+.demo__point-name {
+  font-size: var(--size-h4);
+  font-weight: var(--weight-ui);
+  line-height: 1.35;
+  margin-block-end: var(--space-1);
+}
+
+.demo__point-text {
+  font-size: var(--size-sm);
+  line-height: var(--leading-snug);
+  color: var(--text-muted);
+  max-width: 46ch;
+}
+
+.demo__disclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  max-width: 54ch;
+  margin-block-start: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--line-strong);
+  font-size: var(--size-xs);
+  line-height: var(--leading-snug);
+  color: var(--text-muted);
+}
+
+.demo__disclaimer strong {
+  font-weight: var(--weight-ui);
+  color: var(--text-strong);
+}
+
+.demo__disclaimer .icon {
+  margin-block-start: 2px;
+  color: var(--ardoise);
+}
+
+/* ---------- Scène ------------------------------------------- */
+.demo__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.demo__tag {
+  background: var(--surface-card);
+}
+
+.demo__hint {
+  font-size: var(--size-xs);
+  color: var(--text-muted);
+}
+
+/* ---------- Téléphone --------------------------------------- */
+.phone {
+  position: relative;
+}
+
+/* Halo jade derrière l'appareil : l'écran est la source de lumière. */
+.phone::before {
+  content: "";
+  position: absolute;
+  inset: -12% -22%;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--halo-jade-soft) 0%, transparent 68%);
+  pointer-events: none;
+}
+
+.phone__frame {
+  position: relative;
+  width: 322px;
+  padding: 11px;
+  border-radius: 48px;
+  background: var(--nuit);
+  box-shadow:
+    var(--shadow-3),
+    0 0 0 1px var(--line-on-deep-strong) inset;
+}
+
+.phone__island {
+  position: absolute;
+  inset-block-start: 22px;
+  inset-inline-start: 50%;
+  translate: -50% 0;
+  width: 86px;
+  height: 24px;
+  border-radius: var(--radius-pill);
+  background: var(--nuit);
+  z-index: 2;
+}
+
+.phone__screen {
+  position: relative;
+  overflow: hidden;
+  border-radius: 38px;
+  background: var(--surface-page);
+  height: 668px;
+  display: flex;
+  flex-direction: column;
+}
+
+.phone__status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-6) var(--space-1);
+  font-size: var(--size-2xs);
+  font-weight: var(--weight-ui);
+  color: var(--text-strong);
+}
+
+.phone__status-icons {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.phone__status-icons i {
+  display: block;
+  width: 13px;
+  height: 9px;
+  border-radius: 2px;
+  background: var(--line-strong);
+}
+
+.phone__status-icons i:last-child {
+  width: 20px;
+  background: var(--text-strong);
+}
+
+/* ---------- Interface de l'app ------------------------------ */
+.app {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.app__body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--space-5) var(--space-5) var(--space-6);
+  /* Pas de barre de défilement dans la maquette : ce n'est pas ce qu'on
+     regarde. Le contenu reste défilable. */
+  scrollbar-width: none;
+}
+
+.app__body::-webkit-scrollbar {
+  display: none;
+}
+
+.app__screen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  animation: app-fade var(--dur-base) var(--ease-out);
+}
+
+@keyframes app-fade {
+  from {
+    opacity: 0;
+    translate: 0 6px;
+  }
+}
+
+.app__hello {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: var(--tracking-tight);
+}
+
+.app__hello--sm {
+  font-size: 1.3rem;
+}
+
+.app__phase {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  align-self: flex-start;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--surface-ok);
+  border: 1px solid var(--line-jade);
+  font-size: var(--size-2xs);
+  font-weight: var(--weight-label);
+  color: var(--text-strong);
+  margin-block-end: var(--space-2);
+}
+
+.app__phase-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--jade);
+}
+
+.app__card {
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-1);
+}
+
+.app__card--priority {
+  border-inline-start: 3px solid var(--warn);
+}
+
+.app__card--watch,
+.app__card--done {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.app__card--done {
+  background: var(--surface-ok);
+  border-color: var(--line-jade);
+  box-shadow: none;
+}
+
+.app__card-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+}
+
+.app__card-icon--accent {
+  background: var(--surface-sunk);
+  color: var(--jade);
+}
+
+.app__card-icon--jade {
+  background: var(--jade);
+  color: var(--ivoire);
+}
+
+.app__kicker {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--size-2xs);
+  font-weight: var(--weight-ui);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin-block-end: var(--space-2);
+  color: var(--text-muted);
+}
+
+.app__kicker--warn {
+  color: var(--text-strong);
+}
+
+.app__kicker--warn svg {
+  color: var(--crit);
+}
+
+.app__card-title {
+  font-size: var(--size-body);
+  font-weight: var(--weight-ui);
+  line-height: 1.35;
+}
+
+.app__card-title--sm {
+  font-size: var(--size-sm);
+}
+
+.app__card-text {
+  font-size: var(--size-xs);
+  line-height: 1.45;
+  color: var(--text-muted);
+  margin-block-start: 2px;
+}
+
+.app__deadline {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-block-start: var(--space-3);
+  font-size: var(--size-xs);
+  color: var(--text-strong);
+}
+
+.app__deadline svg {
+  color: var(--crit);
+}
+
+.app__deadline strong {
+  font-weight: var(--weight-ui);
+}
+
+.app__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-block-start: var(--space-4);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--nuit);
+  color: var(--ivoire);
+  font-size: var(--size-2xs);
+  font-weight: var(--weight-ui);
+}
+
+/* ---------- Écran parcours ---------------------------------- */
+.app__steps {
+  display: flex;
+  flex-direction: column;
+}
+
+.app__step {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding-block: var(--space-2);
+  border-bottom: 1px solid var(--line);
+}
+
+.app__step-icon {
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+}
+
+.app__step.is-done .app__step-icon {
+  color: var(--jade);
+}
+
+.app__step.is-now .app__step-icon {
+  color: var(--jade);
+}
+
+.app__step-name {
+  font-size: var(--size-sm);
+  font-weight: var(--weight-label);
+  color: var(--text-muted);
+}
+
+.app__step.is-done .app__step-name,
+.app__step.is-now .app__step-name {
+  color: var(--text-strong);
+}
+
+.app__step.is-now .app__step-name {
+  font-weight: var(--weight-ui);
+}
+
+.app__step-state {
+  font-size: var(--size-2xs);
+  color: var(--text-muted);
+}
+
+.app__step.is-now .app__step-state {
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-pill);
+  background: var(--surface-ok);
+  color: var(--text-strong);
+  font-weight: var(--weight-label);
+}
+
+.app__aside-label {
+  margin-block-start: var(--space-5);
+  font-size: var(--size-2xs);
+  font-weight: var(--weight-ui);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.app__aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-block-start: var(--space-3);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--line-strong);
+}
+
+.app__aside-item {
+  display: flex;
+  /* Le libellé peut passer sur deux lignes : l'icône reste calée
+     sur la première, jamais flottante entre les deux. */
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--size-xs);
+  line-height: var(--leading-snug);
+  color: var(--text-strong);
+}
+
+.app__aside-item svg {
+  flex: none;
+  margin-block-start: 1px;
+  color: var(--ardoise);
+}
+
+/* ---------- Écran dossier ----------------------------------- */
+.app__pieces {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.app__piece {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  background: var(--surface-card);
+  border: 1px solid var(--line);
+}
+
+.app__piece-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-sunk);
+  color: var(--ardoise);
+}
+
+.app__piece-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.app__piece-name {
+  font-size: var(--size-xs);
+  font-weight: var(--weight-ui);
+}
+
+.app__piece-meta {
+  font-size: var(--size-2xs);
+  color: var(--text-muted);
+}
+
+.app__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  grid-column: 2;
+  justify-self: start;
+  padding: 3px var(--space-2);
+  border-radius: var(--radius-pill);
+  font-size: 0.6875rem;
+  font-weight: var(--weight-label);
+  white-space: nowrap;
+}
+
+.app__badge--verifiee {
+  background: var(--surface-ok);
+  color: var(--text-strong);
+}
+
+.app__badge--verifiee svg {
+  color: var(--jade);
+}
+
+.app__badge--attendue {
+  background: var(--surface-sunk);
+  border: 1px solid var(--line-warn);
+  color: var(--text-strong);
+}
+
+.app__badge--attendue svg {
+  color: var(--crit);
+}
+
+.app__note {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin-block-start: var(--space-4);
+  font-size: var(--size-2xs);
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+/* ---------- Barre d'onglets --------------------------------- */
+.app__tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-3) var(--space-5);
+  border-top: 1px solid var(--line);
+  background: var(--surface-card);
+}
+
+.app__tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding-block: var(--space-2);
+  border-radius: var(--radius-md);
+  font-size: 0.6875rem;
+  font-weight: var(--weight-label);
+  color: var(--text-muted);
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out);
+}
+
+.app__tab:hover {
+  background: var(--surface-sunk);
+  color: var(--text-strong);
+}
+
+.app__tab.is-current {
+  color: var(--text-strong);
+  font-weight: var(--weight-ui);
+}
+
+.app__tab.is-current svg {
+  color: var(--jade);
+}
+
+/* ---------- Adaptations ------------------------------------- */
+@media (max-width: 1000px) {
+  .demo__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .demo__stage {
+    order: -1;
+  }
+}
+
+@media (max-width: 380px) {
+  .phone__frame {
+    width: 100%;
+    max-width: 322px;
+  }
+}

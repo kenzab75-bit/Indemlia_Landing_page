@@ -1,0 +1,103 @@
+.footer {
+  padding-block: var(--space-16) var(--space-10);
+}
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-8) var(--space-10);
+  align-items: start;
+}
+
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.footer__baseline {
+  font-size: var(--size-sm);
+  color: var(--text-on-deep-muted);
+  max-width: 34ch;
+}
+
+.footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-6);
+  justify-self: end;
+}
+
+.footer__nav a {
+  font-size: var(--size-sm);
+  font-weight: var(--weight-label);
+  color: var(--text-on-deep-muted);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.footer__nav a:hover {
+  color: var(--accent);
+}
+
+.footer__legal {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  max-width: 78ch;
+  padding-block-start: var(--space-6);
+  border-top: 1px solid var(--line-on-deep);
+  font-size: var(--size-xs);
+  line-height: var(--leading-snug);
+  color: var(--text-on-deep-muted);
+}
+
+.footer__legal strong {
+  font-weight: var(--weight-ui);
+  color: var(--text-on-deep);
+}
+
+.footer__legal .icon {
+  margin-block-start: 2px;
+  color: var(--accent);
+}
+
+.footer__base {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  padding-block-start: var(--space-6);
+  border-top: 1px solid var(--line-on-deep);
+  font-size: var(--size-xs);
+  color: var(--text-on-deep-faint);
+}
+
+.footer__minor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+}
+
+.footer__minor a {
+  color: var(--text-on-deep-faint);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.footer__minor a:hover {
+  color: var(--text-on-deep);
+}
+
+@media (max-width: 760px) {
+  .footer__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .footer__nav {
+    justify-self: start;
+  }
+}

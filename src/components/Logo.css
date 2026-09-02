@@ -1,0 +1,30 @@
+.logo-mark {
+  --logo-road: var(--nuit);
+  --logo-dot: var(--jade);
+  overflow: visible;
+}
+
+.is-deep .logo-mark {
+  --logo-road: var(--ivoire);
+  --logo-dot: var(--accent);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* Newsreader : réservé au wordmark et aux grands titres émotionnels. */
+.wordmark__text {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 1.5rem;
+  letter-spacing: -0.015em;
+  line-height: 1;
+  color: var(--text-strong);
+}
+
+.is-deep .wordmark__text {
+  color: var(--text-on-deep);
+}
