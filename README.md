@@ -194,13 +194,13 @@ Le hero doit expliquer en moins de cinq secondes :
 - pour qui c'est fait ;
 - ce que la personne peut faire ensuite.
 
-Attention aux formulations trop larges comme :
+La signature suivante est forte et peut être conservée :
 
 ```text
 On le fait avec vous.
 ```
 
-Préférer une promesse plus bornée :
+Elle doit simplement être encadrée par une promesse plus précise :
 
 ```text
 Indemlia vous aide à savoir où vous en êtes, quoi regarder et quoi préparer.
